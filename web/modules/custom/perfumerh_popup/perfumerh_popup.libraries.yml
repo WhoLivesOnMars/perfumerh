@@ -1,0 +1,14 @@
+newsletter_popup:
+  version: 1.x
+  css:
+    theme:
+      css/newsletter-popup.css: {}
+  js:
+    js/newsletter-popup.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once
+    - core/drupal.ajax
+    - core/drupal.dialog
+    - core/drupal.dialog.ajax

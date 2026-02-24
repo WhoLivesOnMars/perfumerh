@@ -1,0 +1,5 @@
+name: Perfumerh Popup
+type: module
+description: Newsletter popup with AJAX dialog
+package: Custom
+core_version_requirement: "^9 || ^10 || ^11"

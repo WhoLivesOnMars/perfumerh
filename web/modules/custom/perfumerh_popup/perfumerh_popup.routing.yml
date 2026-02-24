@@ -1,0 +1,7 @@
+perfumerh_popup.newsletter:
+  path: '/newsletter-popup'
+  defaults:
+    _controller: '\Drupal\perfumerh_popup\Controller\NewsletterPopupController::content'
+    _title: 'Newsletter popup'
+  requirements:
+    _permission: 'access content'

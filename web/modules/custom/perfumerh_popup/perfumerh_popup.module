@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Hooks for the perfumerh_popup module.
+ */
+
+function perfumerh_popup_theme($existing, $type, $theme, $path) {
+  return [
+    'perfumerh_newsletter_popup' => [
+      'template'  => 'perfumerh-newsletter-popup',
+      'variables' => [],
+    ],
+  ];
+}
+
+function perfumerh_popup_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] = 'perfumerh_popup/newsletter_popup';
+}
