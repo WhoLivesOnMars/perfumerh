@@ -1,0 +1,55 @@
+<article{{ attributes.addClass(
+  'ph-product-card',
+  'relative',
+  'text-center',
+  'flex',
+  'flex-col',
+  'items-center',
+  'group'
+) }}>
+
+  {% if node.field_is_new.value == 1 %}
+    <div class="absolute top-4 left-4 z-10 px-3 py-1 text-[0.65rem] tracking-[0.15em] italic"
+         style="background-color: #8b7355; color: #fafafa;">
+      nouveau
+    </div>
+  {% endif %}
+
+  <a href="{{ url }}" class="block w-full">
+    <div class="flex items-center justify-center w-full" style="min-height: 280px;">
+      {{ content.field_image }}
+    </div>
+  </a>
+
+  <a href="{{ url }}"
+     class="text-[0.65rem] tracking-[0.15em] italic mb-3 relative
+            after:absolute after:bottom-0 after:left-1/2 after:h-px after:w-full
+            after:bg-current after:-translate-x-1/2 after:transition-all after:duration-500
+            hover:after:w-0"
+     style="color: #8b7355;">
+    ajout rapide
+  </a>
+
+  <a href="{{ url }}" class="block px-4">
+    <h3 class="text-[0.7rem] tracking-[0.18em] uppercase font-bold mb-1" style="color: #3a3028;">
+      {{ label }}
+    </h3>
+  </a>
+
+  {% set subtitle = content.field_product_label|render|striptags|trim %}
+  {% if subtitle %}
+    <p class="text-[0.7rem] italic" style="color: #8b7355;">{{ subtitle }}</p>
+  {% endif %}
+
+  {% if node.field_limited_edition.value == 1 %}
+    <p class="text-[0.7rem] italic mb-1" style="color: #8b7355;">Limited Edition</p>
+  {% endif %}
+
+  <div class="flex items-center justify-center gap-3 text-[0.7rem] pb-10 mt-1" style="color: #8b7355;">
+    {% set volume = content.field_volume|render|striptags|trim %}
+    {% set price  = content.field_price|render|striptags|trim %}
+    {% if volume %}<span>{{ volume }}</span>{% endif %}
+    {% if price  %}<span>{{ price }}</span>{% endif %}
+  </div>
+
+</article>

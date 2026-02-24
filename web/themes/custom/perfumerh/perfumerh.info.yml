@@ -1,0 +1,28 @@
+name: PerfumerH
+type: theme
+description: 'Custom theme for Perfumer H website'
+package: Custom
+core_version_requirement: ^10 || ^11
+base theme: false
+
+libraries:
+  - perfumerh/global
+
+regions:
+  top_promo: 'Top promotional bar'
+  header: 'Header'
+  primary_menu: 'Primary menu'
+  breadcrumb: 'Breadcrumb'
+
+  hero: 'Homepage hero'
+  collection_highlight: 'Collection highlight'
+  product_grid: 'Product grid'
+  storytelling: 'Storytelling sections'
+  quote_banner: 'Quote / text banner'
+  newsletter: 'Newsletter signup'
+
+  content: 'Main content'
+  sidebar: 'Sidebar'
+
+  footer_top: 'Footer top'
+  footer_bottom: 'Footer bottom'

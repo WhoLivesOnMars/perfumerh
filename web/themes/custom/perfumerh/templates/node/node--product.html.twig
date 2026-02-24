@@ -1,0 +1,161 @@
+
+<article{{ attributes.addClass('ph-product', 'bg-phbgLight', 'text-phtext', 'font-alt', 'py-12') }}>
+  <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row gap-12">
+    <div class="flex-shrink-0 w-full md:w-1/2 flex flex-col items-center">
+      <div class="bg-white w-full flex items-center justify-center">
+        {{ content.field_main_image ?? content.field_image }}
+      </div>
+      {% if content.field_gallery %}
+        <div class="mt-6 flex gap-3 overflow-x-auto w-full">
+          {{ content.field_gallery }}
+        </div>
+      {% endif %}
+    </div>
+    <div class="flex flex-col justify-center w-full md:w-1/2 gap-6">
+      <header>
+        {% if content.field_collection is defined %}
+          <p class="uppercase tracking-[0.25em] text-xs text-phtextLight mb-2">
+            {{ content.field_collection }}
+          </p>
+        {% endif %}
+        <h1{{ title_attributes.addClass('font-main','text-2xl','tracking-[0.18em]','uppercase','mb-1') }}>
+          {{ label }}
+        </h1>
+        {% if content.field_subtitle %}
+          <p class="italic text-base text-phtextLight mb-2" style="color:#8b7355;">
+            {{ content.field_subtitle }}
+          </p>
+        {% endif %}
+        {% if content.field_product_label %}
+          <p class="italic text-base mb-2" style="color:#8b7355;">
+            {{ content.field_product_label }}
+          </p>
+        {% endif %}
+        {% if content.field_limited_edition %}
+          <p class="italic text-base mb-2" style="color:#8b7355;">
+            {{ content.field_limited_edition }}
+          </p>
+        {% endif %}
+        {% if content.field_volume %}
+          <p class="text-base mb-2" style="color:#b6a98b;">
+            {{ content.field_volume }}
+          </p>
+        {% endif %}
+        {% if content.field_price_from %}
+          <p class="mb-4 text-lg font-semibold" style="color:#8b7355;">
+            {{ 'From'|t }} {{ content.field_price_from }}
+          </p>
+        {% elseif content.field_price %}
+          <p class="mb-4 text-lg font-semibold" style="color:#8b7355;">
+            {{ content.field_price }}
+          </p>
+        {% endif %}
+      </header>
+      {% if content.field_short_description %}
+        <div class="text-base leading-relaxed mb-4" style="color:#8b7355;">
+          {{ content.field_short_description }}
+        </div>
+      {% endif %}
+      <button
+        type="button"
+        class="w-full bg-[#8b7355] text-white py-3 text-base tracking-[0.22em] uppercase rounded-sm hover:opacity-80 transition"
+      >
+        {{ 'Ajouter au panier'|t }}
+      </button>
+
+      <div class="mt-8">
+        <ul class="space-y-4 text-base" style="color:#8b7355;">
+          <li class="flex items-center gap-3">
+            <svg width="24" height="24" fill="none" stroke="#8b7355" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2c3.5 4 3.5 16 0 20"/></svg>
+            Free Delivery in Europe (EEC) Over €80
+          </li>
+          <li class="flex items-center gap-3">
+            <svg width="24" height="24" fill="none" stroke="#8b7355" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 2v20"/><path d="M2 12h20"/></svg>
+            International Shipping Available
+          </li>
+        </ul>
+        <hr class="my-8" style="border-color:#ede7df;">
+        <div class="space-y-2 text-base" style="color:#8b7355;">
+          <div class="flex items-center gap-3">
+            <svg width="24" height="24" fill="none" stroke="#8b7355" stroke-width="2"><polyline points="4 12 9 17 20 6"/></svg>
+            Pickup available at Perfumer H Clifford Street
+          </div>
+          <div style="color:#8b7355;">Usually ready in 24 hours</div>
+          <a href="#" class="underline" style="color:#8b7355;">Check availability at other stores</a>
+        </div>
+      </div>
+
+      <hr class="my-8" style="border-color:#ede7df;">
+
+      <div class="mb-8 text-base leading-relaxed" style="color:#8b7355;">
+        {% if content.field_long_description %}
+          {{ content.field_long_description }}
+        {% endif %}
+      </div>
+
+      <div class="space-y-6">
+        <div>
+          <button class="w-full text-left font-semibold uppercase tracking-[0.18em] text-base mb-2" style="color:#8b7355;">NOTES <span class="float-right">+</span></button>
+          <hr style="border-color:#ede7df;">
+        </div>
+        <div>
+          <button class="w-full text-left font-semibold uppercase tracking-[0.18em] text-base mb-2" style="color:#8b7355;">INGREDIENTS <span class="float-right">+</span></button>
+          <hr style="border-color:#ede7df;">
+        </div>
+        <div>
+          <button class="w-full text-left font-semibold uppercase tracking-[0.18em] text-base mb-2" style="color:#8b7355;">MORE INFORMATION <span class="float-right">+</span></button>
+          <hr style="border-color:#ede7df;">
+        </div>
+        <div>
+          <button class="w-full text-left font-semibold uppercase tracking-[0.18em] text-base mb-2" style="color:#8b7355;">SHIPPING & DELIVERY <span class="float-right">+</span></button>
+          <hr style="border-color:#ede7df;">
+        </div>
+      </div>
+      </ul>
+
+      {% if content.body %}
+        <section class="mt-8 border-t border-phborder pt-6">
+          {{ content.body }}
+        </section>
+      {% endif %}
+
+      {% if content.field_notes %}
+        <section class="mt-8 border-t border-phborder pt-6">
+          <h2 class="uppercase tracking-[0.18em] text-xs mb-3">
+            {{ 'Notes'|t }}
+          </h2>
+          <div class="text-sm leading-relaxed">
+            {{ content.field_notes }}
+          </div>
+        </section>
+      {% endif %}
+
+      {{ content
+        |without(
+          'field_main_image',
+          'field_image',
+          'field_gallery',
+          'field_collection',
+          'field_subtitle',
+          'field_price',
+          'field_short_description',
+          'field_notes',
+          'field_related_products'
+        )
+      }}
+    </div>
+  </div>
+
+  {% if content.field_related_products %}
+    <section class="mt-16 bg-white border-t border-phborder">
+      <div class="max-w-6xl mx-auto px-4 py-10">
+        <h2 class="uppercase tracking-[0.18em] text-xs mb-6">
+          {{ 'Related products'|t }}
+        </h2>
+        <div class="grid gap-8 md:grid-cols-4">
+          {{ content.field_related_products }}
+        </div>
+      </div>
+    </section>
+  {% endif %}
+</article>

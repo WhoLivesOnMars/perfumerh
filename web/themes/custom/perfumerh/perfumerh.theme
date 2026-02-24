@@ -1,0 +1,74 @@
+<?php
+
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_preprocess_HOOK() for html.html.twig.
+ */
+function perfumerh_preprocess_html(array &$variables) {
+
+  $variables['attributes']['class'][] = 'perfumerh-theme';
+
+  if (\Drupal::routeMatch()->getRouteName() === '<front>') {
+    $variables['attributes']['class'][] = 'is-front';
+  }
+
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof NodeInterface) {
+    $variables['attributes']['class'][] = 'node-' . $node->bundle();
+  }
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK() for page.html.twig.
+ */
+function perfumerh_preprocess_page(array &$variables) {
+
+  if (!empty($variables['page']['sidebar'])) {
+    $variables['attributes']['class'][] = 'has-sidebar';
+  }
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK() for node.html.twig.
+ */
+function perfumerh_preprocess_node(array &$variables) {
+
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $variables['node'];
+
+  if ($node->bundle() === 'product') {
+
+    if ($node->hasField('field_price') && !$node->get('field_price')->isEmpty()) {
+      $variables['formatted_price'] = number_format(
+        (float) $node->get('field_price')->value,
+        2,
+        ',',
+        ' '
+      ) . ' €';
+    }
+
+    if ($node->hasField('field_stock')) {
+      $variables['in_stock'] = $node->get('field_stock')->value > 0;
+    }
+    else {
+      $variables['in_stock'] = TRUE;
+    }
+
+    if ($node->hasField('field_old_price') && !$node->get('field_old_price')->isEmpty()) {
+      $variables['old_price'] = number_format(
+        (float) $node->get('field_old_price')->value,
+        2,
+        ',',
+        ' '
+      ) . ' €';
+
+      $variables['is_on_sale'] = TRUE;
+    }
+    else {
+      $variables['is_on_sale'] = FALSE;
+    }
+  }
+}

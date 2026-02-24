@@ -1,0 +1,52 @@
+<article{{ attributes.addClass('ph-product-card','bg-white','px-6','py-10','flex','flex-row','items-start','gap-10','max-w-4xl','mx-auto') }}>
+  <div class="flex-shrink-0 w-1/2 flex items-center justify-center">
+    {{ content.field_main_image ?? content.field_image }}
+  </div>
+  <div class="flex flex-col justify-center w-1/2">
+    <h3 class="font-main text-2xl tracking-[0.18em] uppercase mb-2" style="color:#8b7355;">
+      {{ label }}
+    </h3>
+    {% if content.field_subtitle %}
+      <p class="mb-2 text-base text-phtextLight italic">
+        {{ content.field_subtitle }}
+      </p>
+    {% endif %}
+    {% if content.field_product_label %}
+      <p class="mb-2 text-base italic" style="color:#8b7355;">
+        {{ content.field_product_label }}
+      </p>
+    {% endif %}
+    {% if content.field_limited_edition %}
+      <p class="mb-2 text-base italic" style="color:#8b7355;">
+        {{ content.field_limited_edition }}
+      </p>
+    {% endif %}
+    {% if content.field_volume %}
+      <p class="mb-2 text-base" style="color:#b6a98b;">
+        {{ content.field_volume }}
+      </p>
+    {% endif %}
+    {% if content.field_price_from %}
+      <p class="mb-4 text-lg font-semibold" style="color:#8b7355;">
+        {{ 'From'|t }} {{ content.field_price_from }}
+      </p>
+    {% elseif content.field_price %}
+      <p class="mb-4 text-lg font-semibold" style="color:#8b7355;">
+        {{ content.field_price }}
+      </p>
+    {% endif %}
+    <button class="mt-2 px-6 py-2 bg-[#8b7355] text-white uppercase tracking-[0.18em] text-sm font-main rounded-sm hover:opacity-80 transition">Ajouter au panier</button>
+    {{ content
+      |without(
+        'field_main_image',
+        'field_image',
+        'field_subtitle',
+        'field_product_label',
+        'field_limited_edition',
+        'field_volume',
+        'field_price_from',
+        'field_price'
+      )
+    }}
+  </div>
+</article>
