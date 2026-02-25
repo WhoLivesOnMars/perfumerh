@@ -1,227 +1,193 @@
-# Perfumer H -- Projet Drupal
+# Perfumer H — Projet Drupal
 
 ## 1. Présentation
 
 Ce projet a été réalisé dans le cadre du partiel Drupal 11.
 
-L'objectif était de reproduire une structure de site e-commerce inspirée
-du site Perfumer H, en respectant les contraintes techniques demandées.
+L’objectif était de reproduire la structure d’un site e-commerce inspiré du site Perfumer H, en respectant les contraintes techniques imposées.
 
 Le projet comprend :
 
--   Un thème personnalisé
--   Un type de contenu **Produit**
--   Une taxonomie **Catégorie Produit**
--   Plusieurs vues pour le catalogue
--   Un bloc "Produits vedettes"
--   Un module custom pour une popup newsletter
+- Un thème personnalisé
+- Un type de contenu **Produit**
+- Une taxonomie **Catégorie Produit**
+- Plusieurs vues pour le catalogue
+- Un bloc "Produits vedettes"
+- Un module custom pour une popup newsletter
+- Un mega menu implémenté avec Alpine.js
 
-------------------------------------------------------------------------
+---
 
-## 2. Installation
+## 2. Environnement technique
+
+- Drupal 10 / 11
+- PHP 8.4
+- Composer
+- Drush
+- Node.js / npm
+- Tailwind CSS
+- Alpine.js
+
+---
+
+## 3. Installation
 
 ### 1. Cloner le projet
 
-``` bash
 git clone <repository_url>
 cd perfumerh
-```
 
-### 2. Installer les dépendances
+### 2. Installer les dépendances PHP
 
-``` bash
 composer install
-```
 
-### 3. Importer la base de données
+### 3. Installer les dépendances front
 
-Importer le fichier `.sql` fourni.
+npm install
+npm run build
 
-### 4. Importer la configuration
+### 4. Importer la base de données
 
-``` bash
+Importer le fichier .sql fourni.
+
+### 5. Importer la configuration
+
 drush cim
-```
 
-### 5. Activer le thème
+Configuration exportée dans :
+config/sync
 
-Administration → Apparence → Activer **perfumerh**
+### 6. Activer le thème
 
-------------------------------------------------------------------------
+Administration → Apparence → Activer perfumerh
 
-## 3. Thème personnalisé
+---
 
-Nom du thème : `perfumerh`
+## 4. Thème personnalisé
+
+Nom du thème : perfumerh
 
 Fonctionnalités :
 
--   Thème custom créé
--   Intégration Tailwind CSS
--   Fichiers CSS et JS personnalisés
--   Templates Twig personnalisés :
-    -   `page.html.twig`
-    -   `menu--main.html.twig`
-    -   `node--product.html.twig`
-    -   `node--product--teaser.html.twig`
-    -   Overrides pour Views
+- Thème custom créé
+- Intégration Tailwind CSS
+- Mega menu full-width avec Alpine.js
+- Templates Twig personnalisés :
+  - page.html.twig
+  - menu--main.html.twig
+  - node--product.html.twig
+  - node--product--teaser.html.twig
+- Overrides pour Views
 
-------------------------------------------------------------------------
+---
 
-## 4. Type de contenu : Produit
+## 5. Type de contenu : Produit
 
-Type créé : **Produit**
+Champs ajoutés :
 
-### Champs ajoutés :
+- field_category — Référence taxonomie
+- field_image — Image
+- field_price — Nombre (décimal)
+- field_volume — Texte
+- field_product_label — Texte
+- field_featured — Booléen
+- field_is_new — Booléen
+- field_limited_edition — Booléen
 
--   `field_category` --- Référence taxonomie
--   `field_image` --- Image
--   `field_price` --- Nombre (décimal)
--   `field_volume` --- Texte
--   `field_product_label` --- Texte
--   `field_featured` --- Booléen
--   `field_is_new` --- Booléen
--   `field_limited_edition` --- Booléen
+Modes d’affichage configurés :
+- Full
+- Teaser
 
-### Modes d'affichage configurés :
+---
 
--   Full
--   Teaser (utilisé dans les vues)
+## 6. Taxonomie
 
-------------------------------------------------------------------------
+Vocabulaire : Catégorie Produit
 
-## 5. Taxonomie
+Termes principaux :
 
-Vocabulaire : **Catégorie Produit**
+- Bougies
+- Cadeaux
+- Accessoires
+- Encens
+- Thé
+- Maison
+- Parfum
+- Garde-manger
+- Mains
 
-Termes créés :
+---
 
--   Bougies
--   Cadeaux
--   Accessoires
--   Encens
--   Thé
--   Maison
--   Parfum
--   Garde-manger
--   Mains
+## 7. Vues
 
-La taxonomie est associée au type de contenu Produit.
+Vue principale : Catalogue produits
 
-------------------------------------------------------------------------
+Affichages :
 
-## 6. Vues
+- /collections
+- /collections/parfum
+- /collections/bougies
+- /collections/maison
+- /collections/mains
+- /collections/garde-manger
+- /collections/cadeaux
 
-Vue principale : **Catalogue produits (Contenu)**
+Bloc Views :
+- Front featured (produits avec field_featured = TRUE)
 
-### Affichages créés :
-
--   `/collections`
--   `/collections/parfum`
--   `/collections/bougies`
--   `/collections/maison`
--   `/collections/mains`
--   `/collections/garde-manger`
--   `/collections/cadeaux`
-
-### Filtres :
-
--   Contenu publié
--   Type = Produit
--   Filtrage par catégorie
-
-### Bloc Views
-
-Bloc : **Front featured**
-
-Affiche les produits où `field_featured = TRUE`.
-
-------------------------------------------------------------------------
-
-## 7. Blocs
-
-Implémentés :
-
--   Bloc Views : Produits vedettes
--   Bloc Hero (Block content type personnalisé)
-
-### Parties manquantes
-
--   Bloc programmatique avec injection de dépendances : **non
-    implémenté**
--   Bloc affichant les informations admin (login + password) : **non
-    implémenté**
-
-------------------------------------------------------------------------
+---
 
 ## 8. Module custom
 
-Module : `perfumerh_popup`
+Module : perfumerh_popup
 
 Contient :
 
--   Controller
--   Route custom
--   Template Twig
--   Fichiers CSS et JS
+- Controller
+- Routing
+- Template Twig
+- Fichiers CSS
+- Popup newsletter
 
-Fonction :
+Parties incomplètes :
 
-Affichage automatique d'une popup newsletter à l'arrivée sur le site.
+- Formulaire programmatique complet via Form API
+- Validation serveur avancée
+- Traitement AJAX côté serveur
+- Service custom avec injection de dépendances
 
-### Parties incomplètes
+---
 
--   Formulaire programmatique basé sur Form API : **non implémenté**
--   Validation serveur avancée : **non implémentée**
--   AJAX via Form API : **non implémenté**
+## 9. Export de configuration
 
-------------------------------------------------------------------------
-
-## 9. Modules contrib
-
-Modules activés :
-
--   Pathauto
--   Metatag
--   Token
--   Admin Toolbar
--   Webform
-
-------------------------------------------------------------------------
-
-## 10. Export de configuration
-
-Export réalisé avec :
-
-``` bash
+Configuration exportée avec :
 drush cex
-```
 
-Configuration située dans :
+Située dans :
+config/sync
 
-`config/sync`
+---
 
-------------------------------------------------------------------------
-
-## 11. Parties manquantes ou incomplètes (comme demandé)
+## 10. Parties manquantes ou incomplètes
 
 Les éléments suivants ne sont pas entièrement implémentés :
 
--   Bloc programmatique avec injection de dépendances
--   Service custom avec interface et déclaration dans services.yml
--   Formulaire programmatique complet basé sur Form API
--   Validation et traitement AJAX côté serveur
+- Bloc programmatique avec injection de dépendances
+- Service custom déclaré dans services.yml
+- Formulaire Form API complet
+- Validation et AJAX côté serveur
 
-------------------------------------------------------------------------
+---
 
-## 12. Conclusion
+## 11. Conclusion
 
 Le projet respecte :
 
--   La création d'un thème personnalisé
--   La structuration avancée du contenu
--   L'utilisation de taxonomies
--   La création de vues multiples
--   L'intégration d'un module custom
+- Création d’un thème personnalisé
+- Structuration avancée du contenu
+- Utilisation de taxonomies
+- Création de vues multiples
+- Intégration d’Alpine.js pour le mega menu
+- Développement d’un module custom
 
-Les fonctionnalités avancées liées aux services et à l'injection de
-dépendances restent partiellement ou non implémentées.
+Certaines fonctionnalités avancées liées aux services et à l’injection de dépendances restent partiellement implémentées.
