@@ -1,9 +1,95 @@
-{% if items %}
-  <ul class="flex flex-col lg:flex-row gap-4 lg:gap-8 text-xs tracking-[0.2em] uppercase">
-    {% for item in items %}
-      <li class="list-none">
-        {{ link(item.title, item.url) }}
-      </li>
-    {% endfor %}
-  </ul>
-{% endif %}
+<nav x-data="megaMenu()" class="relative w-full">
+  {% if items %}
+    <ul class="flex justify-center gap-8 text-xs tracking-[0.2em] uppercase">
+      {% for item in items %}
+        {% set key = item.title
+          |lower
+          |replace({
+            ' ': '-',
+            'é': 'e',
+            'è': 'e',
+            'ê': 'e',
+            'à': 'a',
+            'â': 'a',
+            'ù': 'u',
+            'û': 'u',
+            'ç': 'c'
+          })
+        %}
+
+        <li class="relative list-none"
+            @mouseenter="open = '{{ key }}'"
+            @mouseleave="open = null">
+          {{ link(item.title, item.url, {
+            'class': 'inline-block px-3 py-2'
+          }) }}
+
+          {# Мегаменю только для нужных пунктов #}
+          {% if key in ['maison', 'cadeaux', 'garde-manger'] %}
+            <div
+              x-show="open === '{{ key }}'"
+              x-transition.opacity.duration.150ms
+              x-cloak
+              class="mega-menu-panel"
+            >
+              <div class="max-w-6xl mx-auto flex gap-16 py-8 text-[11px] tracking-[0.2em] uppercase">
+
+                {# MAISON #}
+                {% if key == 'maison' %}
+                  <div class="min-w-[180px]">
+                    <div class="mb-3 font-semibold">PAR TYPE</div>
+                    <ul class="space-y-1">
+                      <li class="list-none"><a href="/collections/maison?type=encens" class="no-underline hover:underline">Encens</a></li>
+                      <li class="list-none"><a href="/collections/maison?type=vaporisateurs" class="no-underline hover:underline">Vaporisateurs d’intérieur</a></li>
+                      <li class="list-none"><a href="/collections/maison?type=pot-pourri" class="no-underline hover:underline">Pot-pourri</a></li>
+                    </ul>
+                  </div>
+
+                  <div class="min-w-[180px]">
+                    <div class="mb-3 font-semibold">ACCESSOIRES</div>
+                    <ul class="space-y-1">
+                      <li class="list-none"><a href="/collections/maison?type=accessoires" class="no-underline hover:underline">Accessoires</a></li>
+                      <li class="list-none"><a href="/collections/maison?type=tote-bags" class="no-underline hover:underline">Linen tote bags</a></li>
+                    </ul>
+                  </div>
+                {% endif %}
+
+                {# CADEAUX #}
+                {% if key == 'cadeaux' %}
+                  <div class="min-w-[180px]">
+                    <div class="mb-3 font-semibold">PAR TYPE</div>
+                    <ul class="space-y-1">
+                      <li class="list-none"><a href="/collections/cadeaux?type=coffrets" class="no-underline hover:underline">Coffrets cadeaux</a></li>
+                      <li class="list-none"><a href="/collections/cadeaux?type=petites-attentions" class="no-underline hover:underline">Petites attentions</a></li>
+                    </ul>
+                  </div>
+
+                  <div class="min-w-[180px]">
+                    <div class="mb-3 font-semibold">IDÉES</div>
+                    <ul class="space-y-1">
+                      <li class="list-none"><a href="/collections/cadeaux?type=maison" class="no-underline hover:underline">Pour la maison</a></li>
+                      <li class="list-none"><a href="/collections/cadeaux?type=bain" class="no-underline hover:underline">Pour le bain</a></li>
+                    </ul>
+                  </div>
+                {% endif %}
+
+                {# GARDE-MANGER #}
+                {% if key == 'garde-manger' %}
+                  <div class="min-w-[180px]">
+                    <div class="mb-3 font-semibold">PAR TYPE</div>
+                    <ul class="space-y-1">
+                      <li class="list-none"><a href="/collections/garde-manger?type=confitures" class="no-underline hover:underline">Confitures</a></li>
+                      <li class="list-none"><a href="/collections/garde-manger?type=conserves" class="no-underline hover:underline">Conserves</a></li>
+                      <li class="list-none"><a href="/collections/garde-manger?type=huiles" class="no-underline hover:underline">Huiles &amp; assaisonnements</a></li>
+                    </ul>
+                  </div>
+                {% endif %}
+
+              </div>
+            </div>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</nav>

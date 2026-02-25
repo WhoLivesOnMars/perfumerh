@@ -2,8 +2,17 @@ global:
   version: 1.0.0
   css:
     theme:
-      dist/css/style.css: { minified: true }
+      dist/css/style.css:
+        minified: true
   js:
-    dist/js/main.js: { minified: true }
+    dist/js/main.js:
+      minified: true
+      attributes:
+        defer: true
+    https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js:
+      type: external
+      minified: true
+      attributes:
+        defer: true
   dependencies:
     - core/drupal
