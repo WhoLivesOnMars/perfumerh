@@ -1,0 +1,9 @@
+uuid: 9e622704-fd0c-42e2-9858-8e115217221f
+langcode: fr
+status: true
+dependencies: {  }
+name: 'Catégorie Produit'
+vid: product_category
+description: 'Classification des produits'
+weight: 0
+new_revision: false

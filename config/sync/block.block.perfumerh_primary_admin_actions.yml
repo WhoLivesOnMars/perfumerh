@@ -1,0 +1,20 @@
+uuid: b8b71842-7248-4134-bee9-fe1df1e2f3ed
+langcode: fr
+status: true
+dependencies:
+  theme:
+    - perfumerh
+_core:
+  default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
+id: perfumerh_primary_admin_actions
+theme: perfumerh
+region: sidebar
+weight: -6
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: "Actions d'administration principales"
+  label_display: '0'
+  provider: core
+visibility: {  }

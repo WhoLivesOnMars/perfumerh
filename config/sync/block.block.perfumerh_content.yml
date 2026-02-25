@@ -1,0 +1,26 @@
+uuid: 547a751e-5a14-41fa-b139-57e36dd2faa0
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - perfumerh
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: perfumerh_content
+theme: perfumerh
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Contenu de la page principale'
+  label_display: '0'
+  provider: system
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: '<front>'

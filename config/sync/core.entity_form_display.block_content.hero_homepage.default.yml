@@ -1,0 +1,52 @@
+uuid: e15fce47-f7cf-44c8-8e5f-d899ee789e42
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.hero_homepage
+    - field.field.block_content.hero_homepage.field_hero_button_link
+    - field.field.block_content.hero_homepage.field_hero_media_left
+    - field.field.block_content.hero_homepage.field_hero_media_right
+    - field.field.block_content.hero_homepage.field_hero_title
+  module:
+    - link
+    - media_library
+    - text
+id: block_content.hero_homepage.default
+targetEntityType: block_content
+bundle: hero_homepage
+mode: default
+content:
+  field_hero_button_link:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_hero_media_left:
+    type: media_library_widget
+    weight: 0
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_hero_media_right:
+    type: media_library_widget
+    weight: 1
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_hero_title:
+    type: text_textfield
+    weight: 26
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  info: true
+  langcode: true

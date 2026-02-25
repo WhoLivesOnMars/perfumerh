@@ -1,0 +1,8 @@
+uuid: f79d1254-b766-43a7-a448-4a466febeac1
+langcode: fr
+status: true
+dependencies: {  }
+id: hero_homepage
+label: "Hero page d'accueil"
+revision: false
+description: 'Section hero pour la page d’accueil.'

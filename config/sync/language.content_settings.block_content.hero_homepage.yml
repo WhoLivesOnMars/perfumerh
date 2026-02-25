@@ -1,0 +1,11 @@
+uuid: 6ac72ab0-cb49-477b-b161-72c8a1ea0d8a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.hero_homepage
+id: block_content.hero_homepage
+target_entity_type_id: block_content
+target_bundle: hero_homepage
+default_langcode: site_default
+language_alterable: false

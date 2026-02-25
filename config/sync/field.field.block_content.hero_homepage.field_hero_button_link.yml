@@ -1,0 +1,23 @@
+uuid: 551dbbaa-3c59-4802-a7f1-b8492e5c23a2
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.hero_homepage
+    - field.storage.block_content.field_hero_button_link
+  module:
+    - link
+id: block_content.hero_homepage.field_hero_button_link
+field_name: field_hero_button_link
+entity_type: block_content
+bundle: hero_homepage
+label: 'Lien du bouton'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

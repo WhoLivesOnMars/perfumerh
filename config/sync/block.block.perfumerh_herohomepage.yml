@@ -1,0 +1,28 @@
+uuid: 1144a2f2-4c4b-4f89-a1bc-041cfa542cdd
+langcode: fr
+status: true
+dependencies:
+  content:
+    - 'block_content:hero_homepage:4982649b-31e2-4826-97d4-93bb55429a3e'
+  module:
+    - block_content
+    - system
+  theme:
+    - perfumerh
+id: perfumerh_herohomepage
+theme: perfumerh
+region: hero
+weight: 0
+provider: null
+plugin: 'block_content:4982649b-31e2-4826-97d4-93bb55429a3e'
+settings:
+  id: 'block_content:4982649b-31e2-4826-97d4-93bb55429a3e'
+  label: 'Hero homepage'
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

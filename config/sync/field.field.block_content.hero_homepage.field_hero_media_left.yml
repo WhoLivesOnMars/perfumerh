@@ -1,0 +1,33 @@
+uuid: bccfb7aa-afea-40a5-8415-ec25047a0abd
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.hero_homepage
+    - field.storage.block_content.field_hero_media_left
+    - media.type.image
+    - media.type.remote_video
+    - media.type.video
+id: block_content.hero_homepage.field_hero_media_left
+field_name: field_hero_media_left
+entity_type: block_content
+bundle: hero_homepage
+label: 'Média gauche'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      video: video
+      remote_video: remote_video
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

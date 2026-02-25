@@ -1,0 +1,21 @@
+uuid: 41248ec4-cf8a-4178-acd5-af45626a35ba
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_limited_edition
+    - node.type.product
+id: node.product.field_limited_edition
+field_name: field_limited_edition
+entity_type: node
+bundle: product
+label: 'Édition limitée'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Édition limitée'
+  off_label: '-'
+field_type: boolean

@@ -1,0 +1,21 @@
+uuid: 507567f7-5e0c-4487-b1b5-aacd16ec44e2
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_featured
+    - node.type.product
+id: node.product.field_featured
+field_name: field_featured
+entity_type: node
+bundle: product
+label: "Mettre en avant sur la page d'accueil"
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Oui
+  off_label: Non
+field_type: boolean

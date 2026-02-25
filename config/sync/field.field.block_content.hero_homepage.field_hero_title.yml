@@ -1,0 +1,24 @@
+uuid: 81fc1765-e1dd-4c76-bd75-3f2620b013c5
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.hero_homepage
+    - field.storage.block_content.field_hero_title
+    - filter.format.restricted_html
+  module:
+    - text
+id: block_content.hero_homepage.field_hero_title
+field_name: field_hero_title
+entity_type: block_content
+bundle: hero_homepage
+label: 'Titre principal'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - restricted_html
+field_type: text

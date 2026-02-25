@@ -1,0 +1,22 @@
+uuid: 9f197ce8-ceef-4b17-8cf2-d7732c80518e
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - perfumerh
+_core:
+  default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
+id: perfumerh_breadcrumbs
+theme: perfumerh
+region: sidebar
+weight: 1
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: "Fils d'ariane"
+  label_display: '0'
+  provider: system
+visibility: {  }

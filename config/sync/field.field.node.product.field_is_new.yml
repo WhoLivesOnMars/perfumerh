@@ -1,0 +1,21 @@
+uuid: c22e7d6e-1224-4968-87d9-64f006a5b3fd
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_is_new
+    - node.type.product
+id: node.product.field_is_new
+field_name: field_is_new
+entity_type: node
+bundle: product
+label: Nouveau
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Nouveau
+  off_label: Non
+field_type: boolean

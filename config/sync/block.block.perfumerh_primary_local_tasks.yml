@@ -1,0 +1,22 @@
+uuid: 9bf0e426-986a-47c8-8d8d-6e449580d33a
+langcode: fr
+status: true
+dependencies:
+  theme:
+    - perfumerh
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: perfumerh_primary_local_tasks
+theme: perfumerh
+region: sidebar
+weight: -1
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Onglets principaux'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

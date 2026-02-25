@@ -1,0 +1,22 @@
+uuid: 57eda4a8-ce4c-4a92-a3bf-ef9234e802af
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - perfumerh
+_core:
+  default_config_hash: eYL19CLDyinGTWYQfBD1DswWzglEotE_kHnHx3AxTXM
+id: perfumerh_powered
+theme: perfumerh
+region: sidebar
+weight: 2
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Propulsé par Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,0 +1,22 @@
+uuid: 91d59d19-9710-4c56-919b-d31fa599ddd8
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - perfumerh
+_core:
+  default_config_hash: BZ5tpW7H8X4PVGRm3MImTIHd2tN0eF7zOtp4SpRYUA0
+id: perfumerh_messages
+theme: perfumerh
+region: sidebar
+weight: -4
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Messages de statut'
+  label_display: '0'
+  provider: system
+visibility: {  }
