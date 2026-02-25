@@ -4,6 +4,7 @@
 /web/themes/contrib/
 /web/profiles/contrib/
 /web/sites/default/files/
+/web/sites/default/settings.php
 /.ddev/
 /web/sites/default/settings.local.php
 
